@@ -26,7 +26,8 @@ export default {
       { rel: 'stylesheet', href: '/css/light.css' },
       { rel: 'stylesheet', href: '/css/secondLight.css' },
       { rel: 'stylesheet', href: '/css/dark.css' },
-      { rel: 'stylesheet', href: '/css/secondDark.css' }
+      { rel: 'stylesheet', href: '/css/secondDark.css' },
+      { rel: 'stylesheet', href: '/css/style.css' }
     ]
   },
   /*

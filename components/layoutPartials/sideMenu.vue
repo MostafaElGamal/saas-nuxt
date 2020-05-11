@@ -35,10 +35,16 @@
         >
           <ul class="kt-menu__nav ">
             <li class="kt-menu__item " aria-haspopup="true">
-              <a href="demo1/index.html" class="kt-menu__link ">
+              <nuxt-link to="/" class="kt-menu__link ">
                 <i class="kt-menu__link-icon flaticon-home"></i>
                 <span class="kt-menu__link-text">Dashboard</span>
-              </a>
+              </nuxt-link>
+            </li>
+            <li class="kt-menu__item " aria-haspopup="true">
+              <nuxt-link to="/customers" class="kt-menu__link ">
+                <i class="kt-menu__link-icon flaticon-home"></i>
+                <span class="kt-menu__link-text">Customers</span>
+              </nuxt-link>
             </li>
           </ul>
         </div>

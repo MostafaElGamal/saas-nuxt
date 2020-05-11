@@ -1,0 +1,8 @@
+.toggle-on {
+  color: green;
+}
+tbody {
+  text-align: center;
+  border: transparent;
+  border-top: 1px solid #ebedf2;
+}

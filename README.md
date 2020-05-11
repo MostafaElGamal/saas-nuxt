@@ -1,4 +1,4 @@
-# saasFront
+# saas-dashboard
 
 > My doozie Nuxt.js project
 
