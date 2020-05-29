@@ -4,6 +4,14 @@
 
 <script>
 export default {
-  name: 'home'
+  name: 'home',
+  asyncData() {
+    console.log('async')
+  },
+  methods: {
+    async test() {
+      var test = await this.$axios.$get('/api/users')
+    }
+  }
 }
 </script>

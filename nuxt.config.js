@@ -30,6 +30,10 @@ export default {
       { rel: 'stylesheet', href: '/css/style.css' }
     ]
   },
+
+  router: {
+    middleware: ['auth']
+  },
   /*
    ** Customize the progress-bar color
    */
@@ -41,7 +45,13 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '~plugins/setBaseUrl.js',
+    '~plugins/getCustomerPermissions.js',
+    '~injections/checkPermissions.js',
+    '~injections/checkCustomerUserPermissions.js',
+    '~injections/checkUserPermissions.js'
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -53,13 +63,28 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/logout', method: 'post' },
+          user: { url: '/user', method: 'post', propertyName: 'user' }
+        }
+      }
+    }
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    // baseURL: location.href
+  },
+
   /*
    ** Build configuration
    */
@@ -68,5 +93,8 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  server: {
+    port: 3010
   }
 }

@@ -22,12 +22,11 @@
       <div class="kt-header__topbar-item kt-header__topbar-item--user">
         <b-dropdown
           id="user-dropdown"
-          text="Hi userName"
+          :text="`Hi: ${$auth.user.name}`"
           class="user-dropdown"
           :no-caret="true"
         >
-          <b-dropdown-item>Profile</b-dropdown-item>
-          <b-dropdown-item>Sign Out</b-dropdown-item>
+          <b-dropdown-item @click="logout">Sign Out</b-dropdown-item>
         </b-dropdown>
       </div>
 
@@ -40,7 +39,17 @@
 </template>
 <script>
 export default {
-  name: 'navbar'
+  name: 'navbar',
+  methods: {
+    async logout() {
+      try {
+        let response = await this.$auth.logout('local')
+        this.$router.push('/login')
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
 }
 </script>
 <style>

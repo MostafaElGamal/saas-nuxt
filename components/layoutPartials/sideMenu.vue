@@ -33,16 +33,46 @@
           data-ktmenu-scroll="1"
           data-ktmenu-dropdown-timeout="500"
         >
-          <ul class="kt-menu__nav ">
+          <ul class="kt-menu__nav " v-if="$checkTenant()">
             <li class="kt-menu__item " aria-haspopup="true">
               <nuxt-link to="/" class="kt-menu__link ">
                 <i class="kt-menu__link-icon flaticon-home"></i>
                 <span class="kt-menu__link-text">Dashboard</span>
               </nuxt-link>
             </li>
+            <li
+              class="kt-menu__item "
+              v-if="$checkCustomerUserPermissions('read-users')"
+              aria-haspopup="true"
+            >
+              <nuxt-link to="/users" class="kt-menu__link ">
+                <i class="kt-menu__link-icon flaticon2-avatar"></i>
+
+                <span class="kt-menu__link-text">Users</span>
+              </nuxt-link>
+            </li>
+          </ul>
+          <ul class="kt-menu__nav " v-else>
+            <li class="kt-menu__item " aria-haspopup="true">
+              <nuxt-link to="/" class="kt-menu__link ">
+                <i class="kt-menu__link-icon flaticon-home"></i>
+                <span class="kt-menu__link-text">Dashboard</span>
+              </nuxt-link>
+            </li>
+            <li
+              class="kt-menu__item "
+              aria-haspopup="true"
+              v-if="$checkUserPermissions('read-users')"
+            >
+              <nuxt-link to="/users" class="kt-menu__link ">
+                <i class="kt-menu__link-icon flaticon2-avatar"></i>
+
+                <span class="kt-menu__link-text">Users</span>
+              </nuxt-link>
+            </li>
             <li class="kt-menu__item " aria-haspopup="true">
               <nuxt-link to="/customers" class="kt-menu__link ">
-                <i class="kt-menu__link-icon flaticon-home"></i>
+                <i class="kt-menu__link-icon flaticon-businesswoman"></i>
                 <span class="kt-menu__link-text">Customers</span>
               </nuxt-link>
             </li>
